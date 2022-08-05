@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh "pwd"
+                sh "pwd && ls -ltrh"
                 sh "git clone git@github.com:cybercatns/jenkins.git"
                 sh "ls -ltrh"
             }
