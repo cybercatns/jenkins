@@ -20,5 +20,13 @@ pipeline {
                 terraform apply -auto-approve"
             }
         }
+
+        stage('Install') {
+            steps {
+                sh "cp terraform/inventory ansible/"
+                sh "cd ansible && \
+                ansible-playbook -i inventory webservers.yml"
+            }
+        }
     }
 }
