@@ -12,6 +12,6 @@ resource "aws_instance" "web" {
   key_name = "Jenkins"
 
   tags = {
-    Name = "HelloWorld"
+    Name = "WebServer"
   }
 }
