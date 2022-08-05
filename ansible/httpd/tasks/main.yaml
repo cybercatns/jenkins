@@ -13,6 +13,6 @@
   ansible.builtin.copy:
     src: index.html
     dest: /var/www/html
-    owner: httpd
-    group: httpd
+    owner: apache
+    group: apache
     mode: '0755'    
