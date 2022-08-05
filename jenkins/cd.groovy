@@ -1,4 +1,22 @@
-hi
+pipeline {
+    agent any
 
-terraform init
-terraform apply -auto-approve
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh "git clone git@github.com:cybercatns/jenkins.git"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
