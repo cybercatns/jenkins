@@ -23,7 +23,7 @@ pipeline {
 
         stage('Install') {
             steps {
-                sh "chmod 400 ansible/files/jenkins.pem && ll ansible/files/jenkins.pem"
+                sh "chmod 400 ansible/files/jenkins.pem && ls -lah ansible/files/jenkins.pem"
                 sh "cp terraform/inventory ansible/"
                 sh "cd ansible && \
                 ansible-playbook -i inventory webservers.yaml"
