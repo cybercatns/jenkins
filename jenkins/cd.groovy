@@ -23,9 +23,9 @@ pipeline {
 
         stage('Install') {
             steps {
-                sh "chmod 400 ansible/files/jenkins.pem"
+                sh "sudo chmod 400 ansible/files/jenkins.pem"
                 sh "cp terraform/inventory ansible/"
-                sh "export ANSIBLE_SSH_RETRIES=10 && cd ansible && \
+                sh "cd ansible && \
                 ansible-playbook -i inventory webservers.yaml"
             }
         }        
