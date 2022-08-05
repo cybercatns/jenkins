@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh "chmod 400 ansible/files/jenkins.pem && ls -lah ansible/files/jenkins.pem"
                 sh "cp terraform/inventory ansible/"
-                sh "cd ansible && \
+                sh "export ANSIBLE_SSH_RETRIES=3 && cd ansible && \
                 ansible-playbook -i inventory webservers.yaml -vvv"
             }
         }        
