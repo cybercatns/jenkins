@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                cleanWs()
+                echo 'Building..'                
                 sh "pwd && ls -ltrh"
             }
         }
@@ -28,6 +27,13 @@ pipeline {
                 sh "cd ansible && \
                 ansible-playbook -i inventory webservers.yaml"
             }
+        }        
+    }
+
+    post {
+        // Clean after build
+        always {
+            cleanWs()
         }
     }
 }
