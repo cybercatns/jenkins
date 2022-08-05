@@ -24,7 +24,7 @@ pipeline {
         stage('Install') {
             steps {
                 sh "cp terraform/inventory ansible/"
-                sh "cd ansible && \
+                sh "export ANSIBLE_SSH_RETRIES=10 && cd ansible && \
                 ansible-playbook -i inventory webservers.yaml"
             }
         }        
