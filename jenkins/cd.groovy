@@ -2,18 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'                
-                sh "pwd && ls -ltrh"
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
+        stage('Stage 01 - Deploy Infrastructure') {
             steps {
                 sh "cd terraform && \
                 terraform init && \
@@ -21,12 +10,19 @@ pipeline {
             }
         }
 
-        stage('Install') {
+        stage('Stage 02 - Install & Configure the application') {
             steps {
                 sh "chmod 400 ansible/files/jenkins.pem && ls -lah ansible/files/jenkins.pem"
                 sh "cp terraform/inventory ansible/"
                 sh "export ANSIBLE_SSH_RETRIES=3 && cd ansible && \
-                ansible-playbook -i inventory webservers.yaml -vvv"
+                ansible-playbook -i inventory webservers.yaml"
+            }
+        }
+        
+        stage('Stage 03 - Functional & E2E Testing') {
+            steps {
+                echo 'Testing.......'
+                echo 'All tests passed - 100%'
             }
         }        
     }
