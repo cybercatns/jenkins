@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh "cp terraform/inventory ansible/"
                 sh "cd ansible && \
-                ansible-playbook -i inventory webservers.yml"
+                ansible-playbook -i inventory webservers.yaml"
             }
         }
     }
