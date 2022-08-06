@@ -18,7 +18,13 @@ pipeline {
             steps {
                 echo 'Run the unit test cases automated by the developers.'
             }
-        }        
+        }
+        
+        stage('Stage 04 - Upload to Artifactory') {
+            steps {
+                echo 'Upload to Artifactory'
+            }
+        }         
     }
 
     post {
