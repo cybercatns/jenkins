@@ -9,6 +9,27 @@
 </head>
 <body>
 <h1>Hello World!!</h1> 
-<h2>Created with Ansible. All manual actions will be overridden.</h2>   
+<h2>Created with Ansible. All manual actions will be overridden.</h2> 
+
+<h2>Stage 01 – Deploy Infrastructure</h2>
+<ul>
+  <li>This stage will create the infrastructure.</li>
+  <li>We use tools like Terraform to automate cloud infrastructure as code. </li>
+  <li>Test infrastructure is identical but scaled down version of the production.</li>
+  <li>Terraform has features like Workspaces, Modules, Variables to maintain TEST, UAT and PROD infrastructure requirements in one code. </li>
+</ul>
+
+<h2>Stage 02 – Install / Configure the application</h2>
+<ul>
+  <li>Application need be properly installed first. This is done using tools like Ansible.</li>
+  <li>Ansible has features like Playbooks, Roles, Tasks and Template to isolate TEST, UAT and PROD configurations. </li>
+</ul>
+
+<h2>Stage 03 – Functional / E2E Testing</h2>
+<ul>
+  <li>Functional test suites are created by the developers. Some applications are tested against nonfunctional tests too. </li>
+  <li>End-to-end testing is the final testing before the release.  </li>
+</ul>
+
 </body>
 </html>
